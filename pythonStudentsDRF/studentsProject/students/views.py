@@ -9,6 +9,6 @@ from . permissions import CustomPermission
 class StudentViewSet(viewsets.ModelViewSet):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
-    permission_classes = (CustomPermission,)
+    permission_classes = (IsAuthenticatedOrReadOnly,)
     filter_backends = [filters.SearchFilter,filters.OrderingFilter]
     search_fields = ['firstName', 'secondName', 'year', 'phone']
